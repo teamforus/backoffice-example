@@ -1,0 +1,12 @@
+{
+    "name": "hcn/guzzle-demo",
+    "authors": [
+        {
+            "name": "dev-rminds",
+            "email": "hcn@weget.nl"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.3"
+    }
+}
