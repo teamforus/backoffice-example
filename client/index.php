@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
-const API_URL = 'https://server.sponsor-api.com:444';
+const API_URL = 'https://server.sponsor-api.com';
 const PEM_PASSPHRASE = 'password';
 
 $requiredPemFiles = ['server-ca-crt.pem', 'client-crt.pem', 'client-key.pem'];
@@ -28,9 +28,10 @@ $headers = [
 ];
 
 $content = [
-    "bsn"=> 12345678,
+    "id" => "forus-" . random_int(10000000, 99999999),
+    "bsn" => 12345678,
     "action" => "eligibility_check",
-    "fund_key"=> "zuidhorn"
+    "fund_key" => "zuidhorn",
 ];
 
 $date = date('Y-m-d H:i:s');

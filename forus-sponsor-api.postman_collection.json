@@ -1,0 +1,208 @@
+{
+	"info": {
+		"_postman_id": "5177d000-832b-4ee0-b8c1-8be134c16bb7",
+		"name": "forus-sponsor-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "residency_check",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bsn\": 123456789,\n    \"action\": \"residency_check\",\n    \"fund_key\": \"zuidhorn\",\n    \"id\": \"forus-bd36ba6ab83964b3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiUrl}}/funds",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"funds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eligibility_check",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bsn\": 123456789,\n    \"action\": \"eligibility_check\",\n    \"fund_key\": \"zuidhorn\",\n    \"id\": \"forus-bd36ba6ab83964b3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiUrl}}/funds",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"funds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "received",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bsn\": 123456789,\n    \"action\": \"received\",\n    \"fund_key\": \"zuidhorn\",\n    \"id\": \"forus-bd36ba6ab83964b3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiUrl}}/funds",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"funds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "first_use",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bsn\": 123456789,\n    \"action\": \"first_use\",\n    \"fund_key\": \"zuidhorn\",\n    \"id\": \"forus-bd36ba6ab83964b3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiUrl}}/funds",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"funds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "status",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"bsn\": 123456789,\n    \"action\": \"first_use\",\n    \"fund_key\": \"zuidhorn\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{apiUrl}}/status",
+					"host": [
+						"{{apiUrl}}"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "BjHrATtUVgFD2sS3csrGZuMjZ93QmzUKcc3Gh5as4qXqsLNvh8m2VwtxznfccVyH",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiUrl",
+			"value": "https://server.sponsor-api.com/api/v1"
+		}
+	]
+}
