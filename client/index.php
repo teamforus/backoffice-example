@@ -4,7 +4,7 @@ require 'vendor/autoload.php';
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 
-const API_URL = 'https://server.sponsor-api.com';
+const API_URL = 'https://server.sponsor-api.com:444';
 const PEM_PASSPHRASE = 'password';
 
 $requiredPemFiles = ['server-ca-crt.pem', 'client-crt.pem', 'client-key.pem'];

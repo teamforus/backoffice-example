@@ -2,7 +2,12 @@ const { LOG_CONECTIONS } = process.env;
 
 const LoggerMiddleware = function(req, _, next) {
     if (LOG_CONECTIONS) {
-        console.log('New connection: [' + req.method + '][' + req.url + '] - body: '+ JSON.stringify(req.body) + ', query: ' + JSON.stringify(req.query));
+        const body = JSON.stringify(req.body, null, '    ');
+        const query = JSON.stringify(req.query, null, '    ');
+        const endpoint = `[${req.method}][${req.url}]`;
+        const separator = '-'.repeat(40);
+
+        console.log(`New connection: ${endpoint}\nbody: ${body}\nquery: ${query}\n${separator}`);
     }
 
     next();
