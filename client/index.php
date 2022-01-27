@@ -28,9 +28,10 @@ $headers = [
 ];
 
 $content = [
-    "bsn"=> 12345678,
+    "id" => "forus-" . random_int(10000000, 99999999),
+    "bsn" => 12345678,
     "action" => "eligibility_check",
-    "fund_key"=> "zuidhorn"
+    "fund_key" => "zuidhorn",
 ];
 
 $date = date('Y-m-d H:i:s');
