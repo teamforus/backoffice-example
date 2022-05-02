@@ -39,6 +39,13 @@ Also, following `.pem` files in your `./certificates` directory.
 
 # Certificates and local development
 
+Add following line to `/etc/hosts` file.  
+```bash
+127.0.0.1 server.sponsor-api.com
+127.0.0.1 client.sponsor-api.com
+```
+For current demo `client.sponsor-api.com` in hosts file is optional.
+
 ## Automatically generate the certificate
 Just run the script:
 ```bash
@@ -50,13 +57,6 @@ To get more details please read the script it's fairly simple.
 ## Manually generate the certificate
 Copied from this article with minor adjustments.  
 https://www.matteomattei.com/client-and-server-ssl-mutual-authentication-with-nodejs/
-
-Add following line to `/etc/hosts` file.  
-```bash
-127.0.0.1 server.sponsor-api.com
-127.0.0.1 client.sponsor-api.com
-```
-For current demo `client.sponsor-api.com` in hosts file is optional.
 
 ### Generate server certificates
 We are going to create a Certification Authority (CA) certificate for the server with 10 year validity and the related key.
