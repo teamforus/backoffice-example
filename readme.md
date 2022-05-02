@@ -29,15 +29,25 @@ The domain name must match the domain name you used to generate the certificates
 ## Certificate files location.
 
 ### Client
-You need to have following `.pem` files in your client `./certificates` directory.  
+You need to have following `.pem` files in your `./certificates` directory.  
 `server-ca-crt.pem`, `client-crt.pem` and `client-key.pem`.
 
 ### Server
-Also, following `.pem` files in your server `./certificates` directory.  
+Also, following `.pem` files in your `./certificates` directory.  
 `client-ca-crt.pem`, `server-crt.pem` and `server-key.pem`.
 
 
-## Generate certificates and local development
+# Certificates and local development
+
+## Automatically generate the certificate
+Just run the script:
+```bash
+./make-certificates-default.sh
+```
+It will automatically generate all the certificates and put them into the right directory.  
+To get more details please read the script it's fairly simple.
+
+## Manually generate the certificate
 Copied from this article with minor adjustments.  
 https://www.matteomattei.com/client-and-server-ssl-mutual-authentication-with-nodejs/
 
@@ -49,9 +59,9 @@ Add following line to `/etc/hosts` file.
 For current demo `client.sponsor-api.com` in hosts file is optional.
 
 ### Generate server certificates
-We are going to create a Certification Authority (CA) certificate for the server with 1 year validity and the related key.
+We are going to create a Certification Authority (CA) certificate for the server with 10 year validity and the related key.
 ```bash
-$ openssl req -new -x509 -days 365 -keyout server-ca-key.pem -out server-ca-crt.pem
+$ openssl req -nodes -new -x509 -days 3650 -keyout server-ca-key.pem -out server-ca-crt.pem
 Generating a RSA private key
 ...........................................................................................+++++
 .......................................+++++
@@ -114,10 +124,10 @@ A challenge password []:
 An optional company name []:
 ```
 Pay attention to the Common Name which must have the same name of the host will serve the application (server.sponsor-api.com).   
-As final step, generate the server certificate (validity 1 year) from the CSR previously created and sign it with the CA key:
+As final step, generate the server certificate (validity 10 year) from the CSR previously created and sign it with the CA key:
 
 ```bash
-$ openssl x509 -req -days 365 -in server-csr.pem -CA server-ca-crt.pem -CAkey server-ca-key.pem -CAcreateserial -out server-crt.pem
+$ openssl x509 -req -days 3650 -in server-csr.pem -CA server-ca-crt.pem -CAkey server-ca-key.pem -CAcreateserial -out server-crt.pem
 Signature ok
 subject=C = IT, ST = Florence, L = Campi Bisenzio, O = AAA Ltd, OU = DevOps, CN = server.sponsor-api.com, emailAddress = info@sponsor-api.com
 Getting CA Private Key
@@ -132,9 +142,9 @@ server-crt.pem: OK
 
 ## Generate client certificates
 Now it’s time to do the same steps for the Client.  
-First create a Certification Authority (CA) certificate for the client with 1 year validity and the related key.
+First create a Certification Authority (CA) certificate for the client with 10 year validity and the related key.
 ```bash
-$ openssl req -new -x509 -days 365 -keyout client-ca-key.pem -out client-ca-crt.pem
+$ openssl req -nodes -new -x509 -days 3650 -keyout client-ca-key.pem -out client-ca-crt.pem
 Generating a RSA private key
 ..........................................................+++++
 .............................................+++++
@@ -198,10 +208,10 @@ A challenge password []:
 An optional company name []:
 ```
 
-Pay attention to the Common Name which must have the same name of the host will serve the application (client.sponsor-api.com). As final step, generate the client certificate (validity 1 year) from the CSR previously created and sign it with the CA key:
+Pay attention to the Common Name which must have the same name of the host will serve the application (client.sponsor-api.com). As final step, generate the client certificate (validity 10 year) from the CSR previously created and sign it with the CA key:
 
 ```bash
-$ openssl x509 -req -days 365 -in client-csr.pem -CA client-ca-crt.pem -CAkey client-ca-key.pem -CAcreateserial -out client-crt.pem
+$ openssl x509 -req -days 3650 -in client-csr.pem -CA client-ca-crt.pem -CAkey client-ca-key.pem -CAcreateserial -out client-crt.pem
 Signature ok
 subject=C = IT, ST = Groningen, L = Groningen, O = BBB Ltd, CN = client.sponsor-api.com, emailAddress = info@sponsor-api.com
 Getting CA Private Key

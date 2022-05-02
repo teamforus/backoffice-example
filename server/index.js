@@ -26,12 +26,14 @@ app.use("/api/v1", [
 ]);
 
 const options = {
-    key: fs.readFileSync('./certificates/server-key.pem'),
-    cert: fs.readFileSync('./certificates/server-crt.pem'),
-    ca: [fs.readFileSync('./certificates/client-ca-crt.pem')],
-    requestCert: true,
-    rejectUnauthorized: true
+    key: fs.readFileSync('../certificates/server-key.pem'),
+    cert: fs.readFileSync('../certificates/server-crt.pem'),
+    ca: [fs.readFileSync('../certificates/client-ca-crt.pem')],
+    requestCert: process.env.MUTUAL_TLS_VERIFY === 'false' ? false : true,
+    rejectUnauthorized: process.env.MUTUAL_TLS_VERIFY === 'false' ? false : true,
 };
 
-// http.createServer(app).listen(8080);
+console.log(`Starting server: http://127.0.0.1:${process.env.PORT_NUMBER}`);
+console.log(`Mutual TLS verification: ${process.env.MUTUAL_TLS_VERIFY === 'false' ? 'No' : 'Yes'}`);
+
 https.createServer(options, app).listen(process.env.PORT_NUMBER);

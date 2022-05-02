@@ -1,1 +1,6 @@
+.idea
 .DS_Store
+certificates
+client/env.php
+server/.env
+server/node_modules
