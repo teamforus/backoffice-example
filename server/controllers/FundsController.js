@@ -11,7 +11,7 @@ const OVERWRITE_ID = process.env.OVERWRITE_ID === 'true';
 const FundsController = function() {
     const router = Router();
 
-    router.post("/funds", function(req, res) {
+    router.post("/funds", [FundControllerMiddleware], function(req, res) {
         const id = OVERWRITE_ID ? uuid.v4() : null;
         const { action, bsn } = req.body;
 
@@ -42,7 +42,7 @@ const FundsController = function() {
         }
 
         return res.status(404).send({ message: 'Not found.' });
-    }, [FundControllerMiddleware]);
+    });
 
     return router;
 }
